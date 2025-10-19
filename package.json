@@ -1,14 +1,16 @@
 {
-  "name": "course-directory-student-template",
-  "version": "1.4.2",
-  "description": "Course Catalog Template for Students",
+  "name": "study_2025-2026_arch_pc",
+  "version": "1.0.0",
+  "description": "Computer Architecture course 2025-2026",
   "main": "index.js",
-  "repository": "git@github.com:yamadharma/course-directory-student-template.git",
-  "author": "Dmitry S. Kulyabov <yamadharma@gmail.com>",
-  "license": "CC-BY-4.0",
-    "config": {
-	"commitizen": {
-	    "path": "cz-conventional-changelog"
-	}
-    }
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["assembly", "computer-architecture", "education"],
+  "author": "Gracimilde",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gracimilde/study_2025-2026_arch_pc"
+  }
 }
