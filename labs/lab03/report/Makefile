@@ -1,14 +1,12 @@
-all: report.pdf report.docx
+all: report.pdf
 
-# Gerar PDF a partir do DOCX
+# Gerar PDF a partir do DOCX (sem alterar DOCX/MD)
 report.pdf: report.docx
+	@echo "Convertendo DOCX para PDF..."
 	libreoffice --headless --convert-to pdf report.docx
-
-# Gerar DOCX a partir do MD (se necessário)
-report.docx: report.md
-	pandoc report.md -o report.docx
+	@echo "PDF gerado a partir do DOCX"
 
 clean:
-	rm -f report.pdf report.docx
+	rm -f report.pdf
 
 .PHONY: all clean
