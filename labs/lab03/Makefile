@@ -1,12 +1,28 @@
-all: report.pdf
+all: report.pdf report.docx
 
-# Gerar PDF a partir do DOCX (sem alterar DOCX/MD)
-report.pdf: report.docx
-	@echo "Convertendo DOCX para PDF..."
-	libreoffice --headless --convert-to pdf report.docx
-	@echo "PDF gerado a partir do DOCX"
+# Diretórios
+BIB_DIR = bib
+IMG_DIR = image  # Alterado de "imagem" para "image"
+PANDOC_DIR = pandoc
+
+# Gerar PDF
+report.pdf: report.md
+	pandoc report.md \
+	--filter pandoc-crossref \
+	--bibliography=$(BIB_DIR)/references.bib \
+	--template=$(PANDOC_DIR)/template.yaml \
+	--pdf-engine=xelatex \
+	-o report.pdf
+
+# Gerar DOCX
+report.docx: report.md
+	pandoc report.md \
+	--filter pandoc-crossref \
+	--bibliography=$(BIB_DIR)/references.bib \
+	--template=$(PANDOC_DIR)/template.yaml \
+	-o report.docx
 
 clean:
-	rm -f report.pdf
+	rm -f report.pdf report.docx
 
 .PHONY: all clean
