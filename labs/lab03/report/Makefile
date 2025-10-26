@@ -1,8 +1,10 @@
 all: report.pdf report.docx
 
-report.pdf: report.md
-	pandoc report.md -o report.pdf --pdf-engine=xelatex
+# Gerar PDF a partir do DOCX
+report.pdf: report.docx
+	libreoffice --headless --convert-to pdf report.docx
 
+# Gerar DOCX a partir do MD (se necessário)
 report.docx: report.md
 	pandoc report.md -o report.docx
 
