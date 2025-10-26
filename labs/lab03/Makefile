@@ -1,25 +1,22 @@
+PANDOC = pandoc
+SOURCE = report/report.md
+BIBLIO = bib/references.bib
+TEMPLATE = pandoc/template.yaml
+
 all: report.pdf report.docx
 
-# Diretórios
-BIB_DIR = bib
-IMG_DIR = image  # Alterado de "imagem" para "image"
-PANDOC_DIR = pandoc
-
-# Gerar PDF
-report.pdf: report.md
-	pandoc report.md \
+report.pdf: $(SOURCE)
+	$(PANDOC) $(SOURCE) \
 	--filter pandoc-crossref \
-	--bibliography=$(BIB_DIR)/references.bib \
-	--template=$(PANDOC_DIR)/template.yaml \
+	--bibliography=$(BIBLIO) \
+	--template=$(TEMPLATE) \
 	--pdf-engine=xelatex \
 	-o report.pdf
 
-# Gerar DOCX
-report.docx: report.md
-	pandoc report.md \
+report.docx: $(SOURCE)
+	$(PANDOC) $(SOURCE) \
 	--filter pandoc-crossref \
-	--bibliography=$(BIB_DIR)/references.bib \
-	--template=$(PANDOC_DIR)/template.yaml \
+	--bibliography=$(BIBLIO) \
 	-o report.docx
 
 clean:
